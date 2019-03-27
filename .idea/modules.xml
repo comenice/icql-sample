@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-api/dubbo-api.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-api/dubbo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-consumer/dubbo-consumer.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-consumer/dubbo-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-provider/dubbo-provider.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-provider/dubbo-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javautil/javautil.iml" filepath="$PROJECT_DIR$/javautil/javautil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-mybaits/springboot-mybaits.iml" filepath="$PROJECT_DIR$/springboot-mybaits/springboot-mybaits.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-springdatajpa/springboot-springdatajpa.iml" filepath="$PROJECT_DIR$/springboot-springdatajpa/springboot-springdatajpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud.iml" filepath="$PROJECT_DIR$/springcloud/springcloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-auth/springcloud-auth.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-auth/springcloud-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-common/springcloud-common.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-common/springcloud-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-config/springcloud-config.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-config/springcloud-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-gateway/springcloud-gateway.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-gateway/springcloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-message/springcloud-message.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-message/springcloud-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-registry/springcloud-registry.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-registry/springcloud-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud/springcloud-tool/springcloud-tool.iml" filepath="$PROJECT_DIR$/springcloud/springcloud-tool/springcloud-tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm/ssm.iml" filepath="$PROJECT_DIR$/ssm/ssm.iml" />
+    </modules>
+  </component>
+</project>

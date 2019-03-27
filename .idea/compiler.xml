@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo-api" />
+        <module name="dubbo-consumer" />
+        <module name="dubbo-provider" />
+        <module name="javautil" />
+        <module name="springboot-mybaits" />
+        <module name="springboot-springdatajpa" />
+        <module name="springcloud-auth" />
+        <module name="springcloud-common" />
+        <module name="springcloud-config" />
+        <module name="springcloud-gateway" />
+        <module name="springcloud-message" />
+        <module name="springcloud-registry" />
+        <module name="springcloud-tool" />
+        <module name="ssm" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-api" target="1.8" />
+      <module name="dubbo-consumer" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="javautil" target="1.8" />
+      <module name="springboot-jpa" target="1.5" />
+      <module name="springboot-mybaits" target="1.8" />
+      <module name="springboot-springdatajpa" target="1.5" />
+      <module name="springcloud" target="1.8" />
+      <module name="springcloud-auth" target="1.8" />
+      <module name="springcloud-common" target="1.8" />
+      <module name="springcloud-config" target="1.8" />
+      <module name="springcloud-gateway" target="1.8" />
+      <module name="springcloud-message" target="1.8" />
+      <module name="springcloud-registry" target="1.8" />
+      <module name="springcloud-tool" target="1.8" />
+      <module name="ssm" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-mybaits" options="-parameters" />
+    </option>
+  </component>
+</project>
