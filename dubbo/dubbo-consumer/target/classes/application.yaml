@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  application:
+    id: consumer
+    name: consumer
+
+logging:
+  level:
+    root: INFO
+  #file: consumer.log

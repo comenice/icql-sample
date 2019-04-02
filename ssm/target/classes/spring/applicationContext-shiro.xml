@@ -46,7 +46,7 @@
     </bean>
 
     <!--shiro 开启注解，将下面以下 beans 放到 spring-mvc 配置文件中-->
-    <!--<aop:config proxy-target-class="true"></aop:config>-->
+    <!--<aop:conf proxy-target-class="true"></aop:conf>-->
     <!--<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">-->
         <!--<property name="securityManager" ref="securityManager"/>-->
     <!--</bean>-->

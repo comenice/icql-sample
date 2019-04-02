@@ -21,8 +21,8 @@ import java.util.Map;
  * @author icql
  * @version 1.0
  * @date 2018/11/27 8:51
- * @Title DataSourceConfig
- * @Description DataSourceConfig
+ * @Title DataSourceConf
+ * @Description DataSourceConf
  */
 @Configuration
 public class DataSourceConfig {

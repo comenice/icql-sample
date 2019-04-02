@@ -9,4 +9,5 @@ package work.icql.springboot.service;
  */
 public interface HelloService {
     void test();
+    Integer tests();
 }

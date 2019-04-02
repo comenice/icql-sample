@@ -18,15 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  * ----登录检查(session或者redis等其他方式)
  * --------已登录：return
  * --------未登录：请求参数中验证 ticket 是否存在
- * ------------是：请求sso-server(/validate,参数ticket)，验证 令牌ticket 是否有效
+ * ------------是：请求sso-listener(/validate,参数ticket)，验证 令牌ticket 是否有效
  * ----------------有效：sso登录通过
- * ----------------无效：删除url ticket参数后的字符串,重定向sso-server(/login,参数service),return
- * ------------否：重定向sso-server(/login,参数service),return
+ * ----------------无效：删除url ticket参数后的字符串,重定向sso-listener(/login,参数service),return
+ * ------------否：重定向sso-listener(/login,参数service),return
  * logout:
- * ----删除自身登录校验,重定向到sso-server(/logout,参数service),return
+ * ----删除自身登录校验,重定向到sso-listener(/logout,参数service),return
  * *****************************************************************************
  * *****************************************************************************
- * sso-server
+ * sso-listener
  * login:(参数service)
  * ----验证全局票据 cookie[ICQLTGC] 是否存在
  * --------是：已经登录过,检查缓存是否存在此TGC

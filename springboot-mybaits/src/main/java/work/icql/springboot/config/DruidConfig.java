@@ -27,12 +27,12 @@ public class DruidConfig {
     private String loginPassword;
 
     /**
-     * 拦截Servlet配置
+     * Servlet：druid监控
      * @return
      */
     @Bean
-    public ServletRegistrationBean startViewServlet() {
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+    public ServletRegistrationBean druidServlet() {
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
         // IP白名单
         servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
         // IP黑名单(共同存在时，deny优先于allow)
@@ -46,17 +46,17 @@ public class DruidConfig {
     }
 
     /**
-     * 去除广告
+     * Filter：druid去除广告
      *
      * @param properties
      * @return
      */
     @Bean
-    public FilterRegistrationBean removeDruidAdFilterRegistrationBean(DruidStatProperties properties) {
+    public FilterRegistrationBean druidAdFilter(DruidStatProperties properties) {
         // 获取web监控页面的参数
-        DruidStatProperties.StatViewServlet config = properties.getStatViewServlet();
+        DruidStatProperties.StatViewServlet servlet = properties.getStatViewServlet();
         // 提取common.js的配置路径
-        String pattern = config.getUrlPattern() != null ? config.getUrlPattern() : "/druid/*";
+        String pattern = servlet.getUrlPattern() != null ? servlet.getUrlPattern() : "/druid/*";
         String commonJsPattern = pattern.replaceAll("\\*", "js/common.js");
 
         final String filePath = "support/http/resources/js/common.js";
@@ -64,7 +64,7 @@ public class DruidConfig {
         //创建filter进行过滤
         Filter filter = new Filter() {
             @Override
-            public void init(FilterConfig filterConfig) throws ServletException {
+            public void init(FilterConfig filterConfig) {
             }
 
             @Override
@@ -84,7 +84,7 @@ public class DruidConfig {
             public void destroy() {
             }
         };
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(filter);
         registrationBean.addUrlPatterns(commonJsPattern);
         return registrationBean;

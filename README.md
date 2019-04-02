@@ -7,8 +7,11 @@
 icql-sample
     ├──javautil (工具类)
     ├──ssm (sso,easyui,fastdfs,redis,freemarker,shiro,jsonp,kindeditor等学习示例)
-    ├──springboot+mybatis 
-    ├──springboot+jpa (未完成...)
+    ├──springboot + mybatis
+        ├──aop(多数据源,方法失败重试)
+        ├──Swagger2,Druid连接池/sql监控/方法监控,mybatis,Cors
+        ├──WebSocket,RabbitMQ,Redis,Caffeine,MapStruct
+        ├──validator增强,mybatis插件(sql性能,敏感词过滤)
     ├──dubbo (dubbo学习示例)
         ├──dubbo-api
         ├──dubbo-consumer

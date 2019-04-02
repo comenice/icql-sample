@@ -1,0 +1,17 @@
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  application:
+    id: provider
+    name: provider
+  scan:
+    base-packages: work.icql.dubbo.provider.service.impl
+
+logging:
+  level:
+    root: INFO
+  #file: provider.log

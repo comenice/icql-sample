@@ -2,10 +2,10 @@ package work.icql.springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -14,13 +14,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    /**
-     * 配置SWAGGER_2
-     *
-     * @return
-     */
+    @Profile({"dev","test"})
     @Bean
-    public Docket createRestApi() {
+    public Docket Swagger() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("work.icql.springboot.controller"))
@@ -29,9 +25,7 @@ public class SwaggerConfig {
                 .apiInfo(
                         new ApiInfoBuilder()
                                 .title("icql-sample-springboot")
-                                .description("springboot-api测试文档")
-                                .termsOfServiceUrl("https://icql.work")
-                                .contact(new Contact("icql", "https://icql.work", "chenqinglin@icql.work"))
+                                .description("icql-sample-springboot测试文档")
                                 .version("1.0")
                                 .build()
                 );

@@ -11,8 +11,8 @@ import org.springframework.web.filter.CorsFilter;
  * @author icql
  * @version 1.0
  * @date 2018/11/21 13:55
- * @Title CorsConfig：更细粒度的控制,可在控制器或方法上@CrossOrigin
- * @Description CorsConfig
+ * @Title CorsConf：更细粒度的控制,可在控制器或方法上@CrossOrigin
+ * @Description CorsConf
  */
 @Configuration
 public class CorsConfig {
@@ -26,7 +26,7 @@ public class CorsConfig {
         conf.addAllowedHeader("*");
         conf.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", conf);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+        FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
 
         bean.setOrder(0);
         return bean;
