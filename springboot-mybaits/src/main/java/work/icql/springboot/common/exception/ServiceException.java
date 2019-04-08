@@ -1,6 +1,7 @@
 package work.icql.springboot.common.exception;
 
-import work.icql.springboot.common.enums.ResultCode;
+import work.icql.springboot.common.result.IResultCode;
+import work.icql.springboot.common.result.ResultCode;
 
 /**
  * @author icql
@@ -9,7 +10,7 @@ import work.icql.springboot.common.enums.ResultCode;
  * @Title ServiceException
  * @Description ServiceException
  */
-public class ServiceException extends RuntimeException implements IBindResultCode {
+public class ServiceException extends RuntimeException implements IResultCode {
     @Override
     public ResultCode getResultCode() {
         return ResultCode.SYSTEM_INNER_ERROR;

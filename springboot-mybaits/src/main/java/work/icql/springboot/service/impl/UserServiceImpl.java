@@ -32,16 +32,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     CacheManager cacheManager;
 
+    @Cacheable(cacheNames = "users_id#1800")
     @Override
-    @Cacheable(cacheNames = "getuser#1800")
     public User getUser(long id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    @Cacheable(cacheNames = "user")
+    @Cacheable(cacheNames = "users")
     @Override
-    public PageInfo listUser(int pageNum,int pageSize,String username) {
-        PageHelper.startPage(pageNum,pageSize);
+    public PageInfo listUser(int pageNum, int pageSize, String username) {
+        PageHelper.startPage(pageNum, pageSize);
 
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
@@ -57,10 +57,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void insertUser(User user) {
-        int count = userMapper.insert(user);
-        if (count != 1) {
-            throw new ServiceException();
-        }
+        userMapper.insert(user);
     }
 
     @Override

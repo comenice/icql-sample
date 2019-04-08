@@ -51,7 +51,6 @@ spring:
         max-active: 8
         max-idle: 10
         min-idle: 0
-        timeout: 1000
   rabbitmq:
     host: icql.work
     port: 5672

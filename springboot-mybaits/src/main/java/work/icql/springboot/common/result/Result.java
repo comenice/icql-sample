@@ -1,7 +1,6 @@
 package work.icql.springboot.common.result;
 
 import lombok.Data;
-import work.icql.springboot.common.enums.ResultCode;
 
 import java.io.Serializable;
 

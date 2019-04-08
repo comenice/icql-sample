@@ -1,17 +1,20 @@
 package work.icql.springboot.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import work.icql.springboot.common.annotation.FailedRetry;
-import work.icql.springboot.common.exception.DataUpdatedException;
+import work.icql.springboot.common.exception.data.DataIsUpdatedException;
 import work.icql.springboot.entity.User;
 import work.icql.springboot.entity.UserExample;
 import work.icql.springboot.mapper.UserMapper;
 import work.icql.springboot.service.HelloService;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * @author icql
@@ -52,7 +55,7 @@ public class HelloServiceImpl implements HelloService {
         //log.error("缓存了");
     }
 
-    @FailedRetry(maxRetries = 5,exceptionClazz = {DataUpdatedException.class})
+    @FailedRetry(maxRetries = 5,exceptionClazz = {DataIsUpdatedException.class})
     public Integer tests() {
         User user = new User();
         user.setId(5l);
@@ -65,13 +68,25 @@ public class HelloServiceImpl implements HelloService {
         criteria.andAgeEqualTo((short) 12);
         int count = userMapper.updateByExampleSelective(user, example);
         if (count == 0) {
-            throw new DataUpdatedException("数据已被其他人更新");
+            throw new DataIsUpdatedException("数据已被其他人更新");
         }
         return count;
     }
 
-    @Scheduled(cron = "*/5 * * * * ?")
+    //@Scheduled(cron = "*/5 * * * * ?")
     public void testTask(){
         System.out.println("定时任务");
+    }
+
+    @Test
+    public void testAA(){
+        try {
+            int i = 1/0;
+        } catch (Exception e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            System.out.println(sw.toString());
+        }
     }
 }

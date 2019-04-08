@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import work.icql.service.auth.service.AuthService;
-import work.icql.service.common.entity.Result;
-import work.icql.service.common.entity.StatusCode;
+import work.icql.springcloud.auth.service.AuthService;
+import work.icql.springcloud.common.entity.Result;
+import work.icql.springcloud.common.entity.StatusCode;
 
 import java.util.Map;
 

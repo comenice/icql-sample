@@ -3,19 +3,20 @@ package work.icql.springboot.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import work.icql.springboot.common.enums.ResultCode;
 import work.icql.springboot.common.exception.ServiceException;
 import work.icql.springboot.common.result.Result;
+import work.icql.springboot.common.result.ResultCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;
-import java.util.Enumeration;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * @author icql
@@ -32,7 +33,7 @@ public class ExceptionConfig {
     @Profile({"dev"})
     @ExceptionHandler(RuntimeException.class)
     public Object handleRuntimeException(RuntimeException e, HttpServletRequest request) {
-        String message = "" + getExceptionMessage(e, request);
+        String message =getExceptionMessage(e, request);
         log.error(message);
         return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
     }
@@ -41,6 +42,7 @@ public class ExceptionConfig {
     @ExceptionHandler(ServiceException.class)
     public Object handleServiceException(ServiceException e, HttpServletRequest request) {
         String message = getExceptionMessage(e, request);
+        //log.info(message);
         return getResponse(e.getResultCode(), message);
     }
 
@@ -48,6 +50,7 @@ public class ExceptionConfig {
     @ExceptionHandler({MethodArgumentNotValidException.class, ValidationException.class, MethodArgumentTypeMismatchException.class})
     public Object handleParamInvalidException(Exception e, HttpServletRequest request) {
         String message = getExceptionMessage(e, request);
+        //log.info(message);
         return getResponse(ResultCode.PARAM_IS_INVALID, message);
     }
 
@@ -55,7 +58,8 @@ public class ExceptionConfig {
     @ExceptionHandler(ServletException.class)
     public Object handleServletException(ServletException e, HttpServletRequest request) {
         String message = getExceptionMessage(e, request);
-        return getResponse(ResultCode.INTERFACE_REQUEST_TIMEOUT, message);
+        //log.info(message);
+        return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
     }
 
     /* 处理其他异常 */
@@ -63,9 +67,7 @@ public class ExceptionConfig {
     public Object handleDefaultException(Exception e, HttpServletRequest request) {
         String message = getExceptionMessage(e, request);
         log.error(message);
-
-        //TODO mq通知管理员
-
+        //mq通知管理员
         return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
     }
 
@@ -77,18 +79,24 @@ public class ExceptionConfig {
 
     private String getExceptionMessage(Exception e, HttpServletRequest request) {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("IP:%s | url:%s | 异常信息:%s |", request.getRemoteHost(), request.getRequestURL(), e.getMessage()));
-        Enumeration<?> temp = request.getParameterNames();
-        if (temp != null && temp.hasMoreElements()) {
-            sb.append("参数：");
-            while (temp.hasMoreElements()) {
-                String key = (String) temp.nextElement();
-                String value = request.getParameter(key);
-                if (!StringUtils.isEmpty(value)) {
-                    sb.append(String.format("key=%s&value=%s , ", key, value));
-                }
+
+        //添加其他信息
+
+        //获取异常堆栈信息
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        try {
+            e.printStackTrace(pw);
+            sb.append(sw.toString());
+        } finally {
+            pw.close();
+            try {
+                sw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
+
         return sb.toString();
     }
 }

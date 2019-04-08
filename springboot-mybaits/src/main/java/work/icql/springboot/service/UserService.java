@@ -32,44 +32,44 @@ public interface UserService {
     /**
      * 新增user
      *
-     * @param userDO
+     * @param user
      */
-    void insertUser(User userDO);
+    void insertUser(User user);
 
     /**
      * 新增user-批量
      *
-     * @param userDOs
+     * @param users
      */
-    void insertUser(List<User> userDOs);
+    void insertUser(List<User> users);
 
     /**
      * 全量更新user
      *
-     * @param userDO
+     * @param user
      */
-    void updateUser(User userDO);
+    void updateUser(User user);
 
     /**
      * 全量更新user-批量
      *
-     * @param userDOs
+     * @param users
      */
-    void updateUser(List<User> userDOs);
+    void updateUser(List<User> users);
 
     /**
      * 选择更新user
      *
-     * @param userDO
+     * @param user
      */
-    void updateUserSelective(User userDO);
+    void updateUserSelective(User user);
 
     /**
      * 选择更新user-批量
      *
-     * @param userDOs
+     * @param users
      */
-    void updateUserSelective(List<User> userDOs);
+    void updateUserSelective(List<User> users);
 
     /**
      * 删除user

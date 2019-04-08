@@ -2,9 +2,9 @@ package work.icql.springcloud.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import work.icql.service.auth.config.JwtProperties;
-import work.icql.service.common.entity.JwtKey;
-import work.icql.service.common.util.JwtUtils;
+import work.icql.springcloud.auth.config.JwtProperties;
+import work.icql.springcloud.common.entity.JwtKey;
+import work.icql.springcloud.common.util.JwtUtils;
 
 import java.util.HashMap;
 import java.util.Map;
