@@ -33,7 +33,6 @@ public class HelloServiceImpl implements HelloService {
 
     @SuppressWarnings("unchecked")
     @Override
-    @Cacheable(value = "test", key = "1")
     public void test() {
 
         //Long add = redisTemplate.opsForSet().add("VIN", "12346481");

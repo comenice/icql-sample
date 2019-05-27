@@ -32,6 +32,7 @@
         <fastjson.version>1.2.56</fastjson.version>
         <swagger.version>2.7.0</swagger.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
+        <jasypt.version>2.0.0</jasypt.version>
     </properties>
 
     <dependencies>
@@ -51,6 +52,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--cache-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
         <!--rabbitmq-->
@@ -153,6 +160,13 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>${mapstruct.version}</version>
+        </dependency>
+
+        <!--jasypt配置文件明文加密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
         </dependency>
     </dependencies>
 

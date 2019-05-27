@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
-
 /**
  * @author icql
  * @version 1.0
@@ -15,7 +12,12 @@ public class MyTest {
     final int i = 0;
 
     @Test
-    public void test(){
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler(); // 获取编译器对象
+    public void test() throws Exception{
+        TestObject o1 = new TestObject();
+        TestObject o2 = new TestObject();
+        boolean equals = o1.o.equals(o2.o);
+        synchronized (o1){
+            o1.wait();
+        }
     }
 }

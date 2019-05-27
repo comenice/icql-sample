@@ -11,7 +11,6 @@ import work.icql.springboot.common.exception.ServiceException;
 import work.icql.springboot.common.result.Result;
 import work.icql.springboot.common.result.ResultCode;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.io.StringWriter;
 /**
  * @author icql
  * @version 1.0
- * @date 2019/3/29 11:51
+ * @date 2018/11/29 11:51
  * @Title ExceptionConfig
  * @Description ExceptionConfig
  */
@@ -33,54 +32,51 @@ public class ExceptionConfig {
     @Profile({"dev"})
     @ExceptionHandler(RuntimeException.class)
     public Object handleRuntimeException(RuntimeException e, HttpServletRequest request) {
-        String message =getExceptionMessage(e, request);
-        log.error(message);
-        return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
+        String exceptionDetail = getExceptionDetail(e, request);
+        log.error(exceptionDetail);
+
+        return getResponse(ResultCode.SYSTEM_INNER_ERROR, e.getMessage());
     }
 
     /* 处理自定义异常 */
     @ExceptionHandler(ServiceException.class)
     public Object handleServiceException(ServiceException e, HttpServletRequest request) {
-        String message = getExceptionMessage(e, request);
-        //log.info(message);
-        return getResponse(e.getResultCode(), message);
+        String exceptionDetail = getExceptionDetail(e, request);
+        log.info(exceptionDetail);
+
+        return getResponse(e.getResultCode(), e.getMessage());
     }
 
     /* 处理参数校验异常 */
     @ExceptionHandler({MethodArgumentNotValidException.class, ValidationException.class, MethodArgumentTypeMismatchException.class})
     public Object handleParamInvalidException(Exception e, HttpServletRequest request) {
-        String message = getExceptionMessage(e, request);
-        //log.info(message);
-        return getResponse(ResultCode.PARAM_IS_INVALID, message);
-    }
+        String exceptionDetail = getExceptionDetail(e, request);
+        log.info(exceptionDetail);
 
-    /* 处理Servlet异常 */
-    @ExceptionHandler(ServletException.class)
-    public Object handleServletException(ServletException e, HttpServletRequest request) {
-        String message = getExceptionMessage(e, request);
-        //log.info(message);
-        return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
+        return getResponse(ResultCode.PARAM_IS_INVALID, e.getMessage());
     }
 
     /* 处理其他异常 */
     @ExceptionHandler(Exception.class)
     public Object handleDefaultException(Exception e, HttpServletRequest request) {
-        String message = getExceptionMessage(e, request);
-        log.error(message);
-        //mq通知管理员
-        return getResponse(ResultCode.SYSTEM_INNER_ERROR, message);
-    }
+        String exceptionDetail = getExceptionDetail(e, request);
+        log.error(exceptionDetail);
 
+        //mq通知管理员
+
+        return getResponse(ResultCode.SYSTEM_INNER_ERROR, e.getMessage());
+    }
 
     private Object getResponse(ResultCode resultCode, String message) {
         Result result = Result.failure(resultCode, message);
         return ResponseEntity.status(resultCode.httpStatus()).body(result);
     }
 
-    private String getExceptionMessage(Exception e, HttpServletRequest request) {
+    private String getExceptionDetail(Exception e, HttpServletRequest request) {
         StringBuilder sb = new StringBuilder();
 
         //添加其他信息
+        sb.append(e.getMessage());
 
         //获取异常堆栈信息
         StringWriter sw = new StringWriter();

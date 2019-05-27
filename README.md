@@ -12,6 +12,7 @@ icql-sample
         ├──Swagger2,Druid连接池/sql监控/方法监控,mybatis,Cors
         ├──WebSocket,RabbitMQ,Redis,Caffeine,MapStruct
         ├──validator增强,mybatis插件(sql性能,敏感词过滤)
+        ├──Jasypt加密配置文件
     ├──dubbo (dubbo学习示例)
         ├──dubbo-api
         ├──dubbo-consumer

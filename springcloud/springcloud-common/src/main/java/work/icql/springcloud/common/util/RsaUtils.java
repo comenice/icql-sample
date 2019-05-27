@@ -1,5 +1,7 @@
 package work.icql.springcloud.common.util;
 
+import sun.misc.BASE64Encoder;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -121,10 +123,11 @@ public final class RsaUtils {
      * @throws IOException
      */
     public static void writeFile(String destPath, byte[] bytes) throws IOException {
+        BASE64Encoder base64Encoder = new BASE64Encoder();
         File dest = new File(destPath);
         if (!dest.exists()) {
             dest.createNewFile();
         }
-        Files.write(dest.toPath(), bytes);
+        Files.write(dest.toPath(), base64Encoder.encode(bytes).getBytes());
     }
 }

@@ -23,21 +23,21 @@ spring:
 #    add-mappings: false
   datasource:
     druid:
-      loginUsername: root
-      loginPassword: chenqinglin
+      loginUsername: ENC(mnZSRx9EwSv1I7oXGaBo8w==)
+      loginPassword: ENC(F/5u+pujAhFHFGNdyC7bPc8Gj8RMJKWp)
       db1:
-        username: root
-        password: chenqinglin
+        username: ENC(BXKItxGHlynO5emLQJe0kw==)
+        password: ENC(F/5u+pujAhFHFGNdyC7bPc8Gj8RMJKWp)
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://icql.work:3306/test1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=UTC
+        url: jdbc:mysql://icql.work:3306/test1?useUnicode=true&characterEncoding=utf-8&useServerPrepStmts=true&useSSL=false&cachePrepStmts=true&allowMultiQueries=true
         initialSize: 5
         minIdle: 5
         maxActive: 20
       db2:
-        username: root
-        password: chenqinglin
+        username: ENC(Du6ufzYaUfRx7Eb2PB2FZg==)
+        password: ENC(F/5u+pujAhFHFGNdyC7bPc8Gj8RMJKWp)
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://icql.work:3306/test2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=UTC
+        url: jdbc:mysql://icql.work:3306/test2?useUnicode=true&characterEncoding=utf-8&useServerPrepStmts=true&useSSL=false&cachePrepStmts=true&allowMultiQueries=true
         initialSize: 5
         minIdle: 5
         maxActive: 20
@@ -45,7 +45,7 @@ spring:
     database: 0
     host: icql.work
     port: 6379
-    password: chenqinglin
+    password: ENC(F/5u+pujAhFHFGNdyC7bPc8Gj8RMJKWp)
     jedis:
       pool:
         max-active: 8
@@ -54,8 +54,8 @@ spring:
   rabbitmq:
     host: icql.work
     port: 5672
-    username: root
-    password: chenqinglin
+    username: ENC(Du6ufzYaUfRx7Eb2PB2FZg==)
+    password: ENC(F/5u+pujAhFHFGNdyC7bPc8Gj8RMJKWp)
 #    listener:
 #      direct:
 #        acknowledge-mode: manual #消费者ack 手动确认
